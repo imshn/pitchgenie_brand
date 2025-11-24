@@ -1,7 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import { motion } from 'framer-motion'
+import Navbar from '@/components/landing/Navbar'
+import Footer from '@/components/landing/Footer'
+import { Mail, MapPin, Clock, Send, CheckCircle2, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,193 +15,206 @@ export default function Contact() {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500))
     setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
+    setIsSubmitting(false)
   }
 
   return (
-    <main className="bg-black min-h-screen">
-      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo on the left */}
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">P</span>
+    <main className="min-h-screen bg-black selection:bg-emerald-500/30">
+      <Navbar />
+
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[100px]" />
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+
+            {/* Left Side: Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for new partnerships
               </div>
-              <span className="text-white font-bold text-lg">PitchGenie</span>
-            </Link>
 
-            {/* Navigation centered */}
-            <div className="hidden md:flex items-center gap-8">
-              <a href="/#features" className="text-white/70 hover:text-white transition-colors text-sm">Features</a>
-              <a href="/#why" className="text-white/70 hover:text-white transition-colors text-sm">Why Choose</a>
-              <a href="/#demo" className="text-white/70 hover:text-white transition-colors text-sm">Demo</a>
-              <a href="/contact" className="text-cyan-400 font-medium transition-colors text-sm">Contact</a>
-            </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                Let's Scale Your <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-500">Outreach Together</span>
+              </h1>
 
-            {/* CTA button on the right */}
-            <div className="hidden md:block">
-              <button className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold hover:opacity-90 transition-opacity text-sm">
-                Join Beta
-              </button>
-            </div>
+              <p className="text-lg text-white/60 mb-12 leading-relaxed max-w-md">
+                Have questions about enterprise plans, integrations, or custom AI models? Our team is ready to help you close more deals.
+              </p>
 
-            {/* Mobile menu button */}
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-white">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-
-          {mobileMenuOpen && (
-            <div className="md:hidden bg-black border-t border-white/10 p-4 space-y-4 mt-4">
-              <a href="/#features" className="block text-white/70 hover:text-white">Features</a>
-              <a href="/#why" className="block text-white/70 hover:text-white">Why Choose</a>
-              <a href="/#demo" className="block text-white/70 hover:text-white">Demo</a>
-              <a href="/contact" className="block text-cyan-400 font-medium">Contact</a>
-            </div>
-          )}
-        </div>
-      </nav>
-
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 py-20 pt-32">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-cyan-500/15 via-transparent to-transparent rounded-full blur-3xl opacity-60" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-purple-500/15 via-transparent to-transparent rounded-full blur-3xl opacity-60" />
-          <div className="absolute top-1/2 right-0 w-96 h-96 bg-gradient-to-l from-emerald-500/10 via-transparent to-transparent rounded-full blur-3xl opacity-40" />
-        </div>
-
-        <div className="relative z-10 max-w-2xl w-full">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Get in Touch</h1>
-            <p className="text-lg text-white/60">Have questions about PitchGenie? We'd love to help you start closing bigger deals.</p>
-          </div>
-
-          <div className="relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl">
-            {submitted && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/60 rounded-2xl backdrop-blur-sm">
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+              <div className="space-y-8">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
+                    <Mail className="w-6 h-6 text-white group-hover:text-emerald-400 transition-colors" />
                   </div>
-                  <p className="text-white text-xl font-semibold">Message sent successfully!</p>
-                  <p className="text-white/60 text-sm mt-2">We'll get back to you within 24 hours.</p>
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">Email Us</h3>
+                    <p className="text-white/60 text-sm mb-1">For general inquiries and support</p>
+                    <a href="mailto:hello@pitchgenie.com" className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium">support@pitchgenie.in</a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-amber-500/10 group-hover:border-amber-500/20 transition-colors">
+                    <MapPin className="w-6 h-6 text-white group-hover:text-amber-400 transition-colors" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">Visit Us</h3>
+                    <p className="text-white/60 text-sm">313001 Udaipur, Rajasthan<br />India</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
+                    <Clock className="w-6 h-6 text-white group-hover:text-emerald-400 transition-colors" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">Response Time</h3>
+                    <p className="text-white/60 text-sm">We usually respond within 2 hours during business days.</p>
+                  </div>
                 </div>
               </div>
-            )}
+            </motion.div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-white mb-2">Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all"
-                  placeholder="Your name"
-                />
-              </div>
+            {/* Right Side: Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-amber-500/5 rounded-3xl blur-xl" />
+              <div className="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
+                {submitted ? (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
+                    <p className="text-white/60 mb-8">We'll get back to you as soon as possible.</p>
+                    <Button
+                      onClick={() => setSubmitted(false)}
+                      variant="outline"
+                      className="border-white/10 hover:bg-white/5 text-white"
+                    >
+                      Send another message
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-white/80">First Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                          placeholder="John"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-white/80">Last Name</label>
+                        <input
+                          type="text"
+                          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                          placeholder="Doe"
+                        />
+                      </div>
+                    </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-white mb-2">Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all"
-                  placeholder="your@email.com"
-                />
-              </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-white/80">Work Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                        placeholder="john@company.com"
+                      />
+                    </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-white mb-2">Company</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all"
-                  placeholder="Your company name"
-                />
-              </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-white/80">Company Website</label>
+                      <input
+                        type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                        placeholder="company.com"
+                      />
+                    </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-white mb-2">Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/10 transition-all resize-none"
-                  placeholder="How can we help you? Tell us about your outreach goals..."
-                />
-              </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-white/80">How can we help?</label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all resize-none"
+                        placeholder="Tell us about your outreach goals..."
+                      />
+                    </div>
 
-              <button
-                type="submit"
-                className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold hover:opacity-90 transition-opacity"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          <div className="mt-16 grid md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xl text-center hover:bg-white/10 transition-colors">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/30 to-purple-500/30 border border-cyan-500/50 flex items-center justify-center mx-auto mb-3">
-                <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold rounded-xl transition-all shadow-lg shadow-emerald-500/20"
+                    >
+                      {isSubmitting ? (
+                        <span className="flex items-center gap-2">
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Sending...
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-2">
+                          Send Message
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
+                      )}
+                    </Button>
+                  </form>
+                )}
               </div>
-              <h3 className="text-white font-semibold mb-1">Email</h3>
-              <p className="text-white/60 text-sm">hello@pitchgenie.com</p>
-            </div>
-            <div className="p-6 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xl text-center hover:bg-white/10 transition-colors">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/30 to-purple-500/30 border border-cyan-500/50 flex items-center justify-center mx-auto mb-3">
-                <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-white font-semibold mb-1">Response Time</h3>
-              <p className="text-white/60 text-sm">Within 24 hours</p>
-            </div>
-            <div className="p-6 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xl text-center hover:bg-white/10 transition-colors">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/30 to-purple-500/30 border border-cyan-500/50 flex items-center justify-center mx-auto mb-3">
-                <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                </svg>
-              </div>
-              <h3 className="text-white font-semibold mb-1">Location</h3>
-              <p className="text-white/60 text-sm">San Francisco, CA</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black border-t border-white/5 px-4 py-8">
-        <div className="max-w-6xl mx-auto text-center text-sm text-white/60">
-          <p>© 2025 PitchGenie. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }
