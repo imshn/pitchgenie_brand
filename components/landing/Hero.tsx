@@ -10,8 +10,8 @@ export default function Hero() {
         <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
             {/* Animated Background */}
             <div className="absolute inset-0 w-full h-full">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-[128px] animate-pulse" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-[128px] animate-pulse delay-1000" />
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse" />
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[128px] animate-pulse delay-1000" />
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
             </div>
 
@@ -22,7 +22,7 @@ export default function Hero() {
                     transition={{ duration: 0.5 }}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 hover:bg-white/10 transition-colors cursor-pointer"
                 >
-                    <Sparkles className="w-4 h-4 text-emerald-400" />
+                    <Sparkles className="w-4 h-4 text-primary" />
                     <span className="text-sm text-white/80">New: AI LinkedIn Voice Cloning</span>
                 </motion.div>
 
@@ -32,7 +32,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 max-w-4xl mx-auto leading-tight"
                 >
-                    The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-500">AI Outreach Tool</span> That Actually Gets Replies
+                    The <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI Outreach Tool</span> That Actually Gets Replies
                 </motion.h1>
 
                 <motion.p
@@ -52,7 +52,7 @@ export default function Hero() {
                 >
                     <Button
                         size="lg"
-                        className="rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-8 h-12 text-base font-semibold shadow-lg shadow-emerald-500/20"
+                        className="rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 h-12 text-base font-semibold shadow-lg shadow-primary/20"
                         onClick={() => window.open('https://app.pitchgenie.in', '_blank')}
                     >
                         Start For Free
@@ -74,15 +74,15 @@ export default function Hero() {
                     className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-white/40"
                 >
                     <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                        <CheckCircle2 className="w-4 h-4 text-primary" />
                         <span>No credit card required</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                        <CheckCircle2 className="w-4 h-4 text-primary" />
                         <span>14-day free trial</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                        <CheckCircle2 className="w-4 h-4 text-primary" />
                         <span>Cancel anytime</span>
                     </div>
                 </motion.div>

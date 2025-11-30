@@ -9,42 +9,42 @@ const features = [
         description: "Generate hyper-personalized emails that get replies. Our AI analyzes prospect data to craft the perfect hook.",
         icon: Mail,
         className: "md:col-span-2",
-        gradient: "from-emerald-500/20 to-green-500/20"
+        gradient: "from-primary/20 to-primary/10"
     },
     {
         title: "LinkedIn Automation",
         description: "Scale your LinkedIn outreach safely. Auto-connect, follow-up, and endorse skills.",
         icon: Linkedin,
         className: "md:col-span-1",
-        gradient: "from-amber-500/20 to-orange-500/20"
+        gradient: "from-secondary/20 to-secondary/10"
     },
     {
         title: "Smart Sequences",
         description: "Build multi-channel campaigns that adapt based on prospect behavior.",
         icon: Zap,
         className: "md:col-span-1",
-        gradient: "from-lime-500/20 to-emerald-500/20"
+        gradient: "from-primary/20 to-secondary/20"
     },
     {
         title: "Deep Analytics",
         description: "Track open rates, reply rates, and positive sentiment analysis in real-time.",
         icon: BarChart3,
         className: "md:col-span-2",
-        gradient: "from-yellow-500/20 to-amber-500/20"
+        gradient: "from-secondary/20 to-primary/20"
     },
     {
         title: "Team Collaboration",
         description: "Share templates, leads, and insights with your entire sales team.",
         icon: Users,
         className: "md:col-span-1",
-        gradient: "from-teal-500/20 to-emerald-500/20"
+        gradient: "from-primary/20 to-primary/10"
     },
     {
         title: "Global Data Enrichment",
         description: "Automatically enrich leads with verified emails, phone numbers, and social profiles.",
         icon: Globe,
         className: "md:col-span-2",
-        gradient: "from-emerald-500/20 to-cyan-500/20"
+        gradient: "from-secondary/20 to-secondary/10"
     }
 ]
 

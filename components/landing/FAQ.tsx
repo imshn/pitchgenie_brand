@@ -48,7 +48,7 @@ export default function FAQ() {
                 <Accordion type="single" collapsible className="w-full space-y-4">
                     {faqs.map((faq, idx) => (
                         <AccordionItem key={idx} value={`item-${idx}`} className="border border-white/10 rounded-xl px-6 bg-white/5 data-[state=open]:bg-white/10 transition-colors">
-                            <AccordionTrigger className="text-white hover:no-underline hover:text-emerald-400 text-left text-lg font-medium py-6">
+                            <AccordionTrigger className="text-white hover:no-underline hover:text-primary text-left text-lg font-medium py-6">
                                 {faq.question}
                             </AccordionTrigger>
                             <AccordionContent className="text-white/70 text-base leading-relaxed pb-6">

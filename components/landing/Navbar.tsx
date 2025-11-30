@@ -21,7 +21,7 @@ export default function Navbar() {
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
             <div className="container px-4 mx-auto flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-emerald-500 to-amber-500 flex items-center justify-center font-bold text-white">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center font-bold text-primary-foreground">
                         P
                     </div>
                     <span className="text-xl font-bold text-white">PitchGenie</span>

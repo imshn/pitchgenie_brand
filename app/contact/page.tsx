@@ -25,21 +25,39 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setSubmitted(true)
-    setIsSubmitting(false)
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitted(true)
+      setFormData({ name: '', email: '', company: '', message: '' })
+    } catch (error) {
+      console.error('Error sending message:', error)
+      alert('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <main className="min-h-screen bg-black selection:bg-emerald-500/30">
+    <main className="min-h-screen bg-black selection:bg-primary/30">
       <Navbar />
 
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[100px]" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px]" />
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
@@ -51,17 +69,17 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
                 Available for new partnerships
               </div>
 
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 Let's Scale Your <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-500">Outreach Together</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Outreach Together</span>
               </h1>
 
               <p className="text-lg text-white/60 mb-12 leading-relaxed max-w-md">
@@ -70,19 +88,19 @@ export default function Contact() {
 
               <div className="space-y-8">
                 <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
-                    <Mail className="w-6 h-6 text-white group-hover:text-emerald-400 transition-colors" />
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors">
+                    <Mail className="w-6 h-6 text-white group-hover:text-primary transition-colors" />
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Email Us</h3>
                     <p className="text-white/60 text-sm mb-1">For general inquiries and support</p>
-                    <a href="mailto:hello@pitchgenie.com" className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium">support@pitchgenie.in</a>
+                    <a href="mailto:hello@pitchgenie.com" className="text-primary hover:text-primary/80 transition-colors font-medium">support@pitchgenie.in</a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-amber-500/10 group-hover:border-amber-500/20 transition-colors">
-                    <MapPin className="w-6 h-6 text-white group-hover:text-amber-400 transition-colors" />
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-secondary/10 group-hover:border-secondary/20 transition-colors">
+                    <MapPin className="w-6 h-6 text-white group-hover:text-secondary transition-colors" />
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Visit Us</h3>
@@ -91,8 +109,8 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
-                    <Clock className="w-6 h-6 text-white group-hover:text-emerald-400 transition-colors" />
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors">
+                    <Clock className="w-6 h-6 text-white group-hover:text-primary transition-colors" />
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Response Time</h3>
@@ -109,12 +127,12 @@ export default function Contact() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-amber-500/5 rounded-3xl blur-xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl blur-xl" />
               <div className="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
                 {submitted ? (
                   <div className="text-center py-12">
-                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
                     <p className="text-white/60 mb-8">We'll get back to you as soon as possible.</p>
@@ -137,7 +155,7 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
                           placeholder="John"
                         />
                       </div>
@@ -192,7 +210,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold rounded-xl transition-all shadow-lg shadow-emerald-500/20"
+                      className="w-full h-12 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground font-semibold rounded-xl transition-all shadow-lg shadow-primary/20"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center gap-2">

@@ -28,7 +28,7 @@ export default function HowItWorks() {
                     <div>
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
                             From Cold Lead to <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-500">Booked Meeting</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Booked Meeting</span>
                         </h2>
                         <div className="space-y-12">
                             {steps.map((step, idx) => (
@@ -51,14 +51,14 @@ export default function HowItWorks() {
                     </div>
 
                     <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-amber-500/20 rounded-full blur-3xl" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl" />
                         <div className="relative bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-xl">
                             {/* Abstract UI representation */}
                             <div className="space-y-4">
                                 <div className="h-8 w-1/3 bg-white/10 rounded animate-pulse" />
                                 <div className="h-32 w-full bg-white/5 rounded border border-white/5 p-4">
                                     <div className="flex gap-4 mb-4">
-                                        <div className="w-8 h-8 rounded-full bg-emerald-500/20" />
+                                        <div className="w-8 h-8 rounded-full bg-primary/20" />
                                         <div className="space-y-2">
                                             <div className="h-2 w-24 bg-white/20 rounded" />
                                             <div className="h-2 w-16 bg-white/10 rounded" />
@@ -71,7 +71,7 @@ export default function HowItWorks() {
                                     </div>
                                 </div>
                                 <div className="flex justify-end">
-                                    <div className="h-10 w-32 bg-emerald-500 rounded-lg opacity-80" />
+                                    <div className="h-10 w-32 bg-primary rounded-lg opacity-80" />
                                 </div>
                             </div>
                         </div>

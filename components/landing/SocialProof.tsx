@@ -50,14 +50,14 @@ export default function SocialProof() {
                             transition={{ delay: idx * 0.2 }}
                             className="p-8 rounded-2xl bg-white/5 border border-white/10 relative"
                         >
-                            <div className="absolute -top-4 left-8 text-6xl text-emerald-500/20 font-serif">"</div>
+                            <div className="absolute -top-4 left-8 text-6xl text-primary/20 font-serif">"</div>
                             <p className="text-white/80 mb-6 relative z-10 leading-relaxed">
                                 {t.quote}
                             </p>
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-full bg-white/10 overflow-hidden">
                                     {/* Placeholder for avatar if image fails */}
-                                    <div className="w-full h-full bg-gradient-to-br from-emerald-500 to-amber-500" />
+                                    <div className="w-full h-full bg-gradient-to-br from-primary to-secondary" />
                                 </div>
                                 <div>
                                     <div className="font-semibold text-white">{t.author}</div>
