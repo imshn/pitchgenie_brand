@@ -37,9 +37,11 @@ export default function Footer() {
 
                 <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
                     <p>© 2025 PitchGenie. All rights reserved.</p>
-                    <div className="flex gap-8">
-                        <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+                    <div className="flex gap-8 items-center">
+                        <Link href="https://twitter.com/pitchgenie" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Twitter</Link>
+                        <Link href="https://linkedin.com/company/pitchgenie" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</Link>
+                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>

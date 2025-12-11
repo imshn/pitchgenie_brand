@@ -3,9 +3,10 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import JoinWaitlist from './JoinWaitlist'
 
 export default function Hero() {
+
     return (
         <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
             {/* Animated Background */}
@@ -50,14 +51,16 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
-                    <Button
-                        size="lg"
-                        className="rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 h-12 text-base font-semibold shadow-lg shadow-primary/20"
-                        onClick={() => window.open('https://app.pitchgenie.in', '_blank')}
-                    >
-                        Start For Free
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
+                    <JoinWaitlist>
+                        <Button
+                            size="lg"
+                            className="rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 h-12 text-base font-semibold shadow-lg shadow-primary/20"
+                        >
+                            Join the waiting list
+                            <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                    </JoinWaitlist>
+
                     <Button
                         variant="outline"
                         size="lg"
@@ -79,7 +82,7 @@ export default function Hero() {
                     </div>
                     <div className="flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary" />
-                        <span>14-day free trial</span>
+                        <span>Free plan available</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary" />

@@ -99,56 +99,31 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "PitchGenie",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Web",
-            "description": "The most advanced AI outreach tool for B2B sales. Generate hyper-personalized cold emails and LinkedIn sequences.",
-            "url": "https://pitchgenie.in",
-            "image": "https://pitchgenie.in/logo.png",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "INR",
-              "description": "Free tier available"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "ratingCount": "1250",
-              "bestRating": "5",
-              "worstRating": "1"
-            },
-            "featureList": [
-              "AI Cold Email Generation",
-              "LinkedIn Automation",
-              "Email Warmup",
-              "Lead Enrichment",
-              "Unified Inbox"
-            ]
-          })
-        }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "PitchGenie",
-            "url": "https://pitchgenie.in",
-            "logo": "https://pitchgenie.in/logo.png",
-            "sameAs": [
-              "https://twitter.com/pitchgenie",
-              "https://www.linkedin.com/company/pitchgenie"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "customer support",
-              "email": "support@pitchgenie.in"
-            }
-          })
-        }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "ujtmeyjanv");
+            `
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer support',
+                email: 'support@pitchgenie.in',
+              },
+            }),
+          }}
+        />
       </head>
       <body className={`font-sans antialiased bg-black`}>
         {children}

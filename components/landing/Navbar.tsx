@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
+import JoinWaitlist from './JoinWaitlist'
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -31,19 +32,14 @@ export default function Navbar() {
                     <Link href="#features" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Features</Link>
                     <Link href="#how-it-works" className="text-sm font-medium text-white/70 hover:text-white transition-colors">How it Works</Link>
                     <Link href="#pricing" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Pricing</Link>
-                    <Button
-                        variant="ghost"
-                        className="text-white hover:text-white hover:bg-white/10"
-                        onClick={() => window.open('https://app.pitchgenie.in', '_blank')}
-                    >
-                        Log In
-                    </Button>
-                    <Button
-                        className="rounded-full bg-white text-black hover:bg-white/90"
-                        onClick={() => window.open('https://app.pitchgenie.in', '_blank')}
-                    >
-                        Get Started
-                    </Button>
+                    <JoinWaitlist>
+                        <Button
+                            className="rounded-full bg-white text-black hover:bg-white/90"
+
+                        >
+                            Join the waiting list
+                        </Button>
+                    </JoinWaitlist>
                 </div>
 
                 <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -56,7 +52,7 @@ export default function Navbar() {
                     <Link href="#features" className="text-white/70 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Features</Link>
                     <Link href="#how-it-works" className="text-white/70 hover:text-white" onClick={() => setMobileMenuOpen(false)}>How it Works</Link>
                     <Link href="#pricing" className="text-white/70 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
-                    <Button className="w-full" onClick={() => window.open('https://app.pitchgenie.in', '_blank')}>Get Started</Button>
+                    <Button className="w-full" onClick={() => window.open('https://app.pitchgenie.in', '_blank')}>Join the waiting list</Button>
                 </div>
             )}
         </nav>
